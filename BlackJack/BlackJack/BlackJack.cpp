@@ -38,7 +38,7 @@ int main()
 	{
 		Deck.push_back(Cards("Spades", item));
 	}
-	
+
 	for (size_t item = 0; item < 52; item++)
 	{
 		cout << Deck[item].getSuit() << Deck[item].getValue() << endl;
