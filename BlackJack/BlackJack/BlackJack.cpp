@@ -4,13 +4,12 @@
 #include <iostream>
 #include "Cards.h"
 #include <vector>
+#include <random>
 using namespace std;
 
 int main()
 {
-	stack<string> List;
-
-	List.push("");
+	srand(time(0));
 
 	Cards Cards0 = Cards("Diamond", 10);
 	Cards Cards1 = Cards("Clubs", 4);
@@ -18,6 +17,7 @@ int main()
 	
 
 	vector<Cards> Deck;
+	vector<Cards> PlayerHand;
 
 	for (size_t item = 0; item < 13; item++)
 	{
@@ -44,6 +44,15 @@ int main()
 		cout << Deck[item].getSuit() << Deck[item].getValue() << endl;
 	}
 	
+	random_shuffle(Deck.begin(), Deck.end());
+
+	cout << "" << endl;
+
+	Cards FirstCard = Deck.back();
+	Deck.pop_back();
+
+	PlayerHand.push_back(FirstCard);
+
 
 	/*
 	int ages[] = {1, 2, 5, 7, 3};
