@@ -8,9 +8,6 @@ Cards::Cards(string CardSuit, int CardValue) {
 }
 
 Cards::Cards() {
-
-
-
 }
 
 

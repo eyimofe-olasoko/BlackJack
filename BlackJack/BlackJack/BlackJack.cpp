@@ -14,8 +14,6 @@ int main()
 	Cards Cards0 = Cards("Diamond", 10);
 	Cards Cards1 = Cards("Clubs", 4);
 
-	
-
 	vector<Cards> Deck;
 	vector<Cards> PlayerHand;
 
@@ -54,18 +52,6 @@ int main()
 	PlayerHand.push_back(FirstCard);
 
 
-	/*
-	int ages[] = {1, 2, 5, 7, 3};
-	int sum = 0;
-
-	for (size_t item = 0; item < 5; item++)
-	{
-		cout << ages[item] << endl;
-
-		sum += ages[item];
-	}
-
-	cout << "The sum of the your numbers: " << sum << endl;
-	*/
+	
 }
 
