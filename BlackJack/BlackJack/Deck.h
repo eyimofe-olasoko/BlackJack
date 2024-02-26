@@ -7,6 +7,12 @@ using namespace std;
 
 class Deck {
 
+public:
+	vector<Cards> cardDeck;
 
+	Deck();
 
+	void shuffle();
+
+	void Output();
 };

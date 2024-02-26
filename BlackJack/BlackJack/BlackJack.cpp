@@ -5,51 +5,32 @@
 #include "Cards.h"
 #include <vector>
 #include <random>
+#include "Deck.h"
 using namespace std;
 
 int main()
 {
 	srand(time(0));
 
-	Cards Cards0 = Cards("Diamond", 10);
-	Cards Cards1 = Cards("Clubs", 4);
-
-	vector<Cards> Deck;
 	vector<Cards> PlayerHand;
 
-	for (size_t item = 0; item < 13; item++)
-	{
-		Deck.push_back(Cards("Diamond", item));
-
-		// Don't change the ACE in the loop probably
-		//Deck[0] = Cards("Diamond", 1);
-	}
-	for (size_t item = 0; item < 13; item++)
-	{
-		Deck.push_back(Cards("Clubs", item));
-	}
-	for (size_t item = 0; item < 13; item++)
-	{
-		Deck.push_back(Cards("Hearts", item));
-	}
-	for (size_t item = 0; item < 13; item++)
-	{
-		Deck.push_back(Cards("Spades", item));
-	}
-
-	for (size_t item = 0; item < 52; item++)
-	{
-		cout << Deck[item].getSuit() << Deck[item].getValue() << endl;
-	}
 	
-	random_shuffle(Deck.begin(), Deck.end());
+	
+	Deck blackJackDeck = Deck();
+
+	blackJackDeck.shuffle();
 
 	cout << "" << endl;
 
-	Cards FirstCard = Deck.back();
-	Deck.pop_back();
+	Cards FirstCard = blackJackDeck.cardDeck.back();
+	blackJackDeck.cardDeck.pop_back();
 
 	PlayerHand.push_back(FirstCard);
+
+	//cout << "Player's first card: " << PlayerHand.back() << endl;
+	//cout << "Player's second card: " << PlayerHand.back() << endl;
+
+	int total = PlayerHand.back().getValue() + PlayerHand.front().getValue();
 
 
 	
