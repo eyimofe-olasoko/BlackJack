@@ -10,27 +10,69 @@ using namespace std;
 
 int main()
 {
+	//Setting the seed of srand to 0 so a different number generates on each run of the game.
 	srand(time(0));
 
-	vector<Cards> PlayerHand;
+	//Creating a vector to store all of the card in the player's hand
+	vector<Cards> playerHand;
+	vector<Cards> dealerHand;
 
-	
+	string hitOrStand;
 	
 	Deck blackJackDeck = Deck();
 
+	//Shuffles card deck
 	blackJackDeck.shuffle();
 
-	cout << "" << endl;
+	//Gaining asset to the last value in the vector
+	Cards firstCard = blackJackDeck.cardDeck.back();
 
-	Cards FirstCard = blackJackDeck.cardDeck.back();
+	//Remove last element in the vector
 	blackJackDeck.cardDeck.pop_back();
 
-	PlayerHand.push_back(FirstCard);
+	Cards secondCard = blackJackDeck.cardDeck.back();
 
-	//cout << "Player's first card: " << PlayerHand.back() << endl;
-	//cout << "Player's second card: " << PlayerHand.back() << endl;
+	blackJackDeck.cardDeck.pop_back();
 
-	int total = PlayerHand.back().getValue() + PlayerHand.front().getValue();
+	//Getting the first and second card for the player
+	playerHand.push_back(firstCard);
+	playerHand.push_back(secondCard);
+
+	//Getting the first and second card for the dealer
+	dealerHand.push_back(firstCard);
+	dealerHand.push_back(secondCard);
+
+
+	//
+	int playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
+	int dealerTotal = dealerHand.back().getValue() + dealerHand.front().getValue();
+
+
+
+	if (playerTotal == 21)
+	{
+		//BLACK JACK
+	}
+	else if (playerTotal < dealerTotal) {
+		//LOST
+	}
+
+
+	if (hitOrStand == "Hit")
+	{
+		//Add card
+	}
+	else if (hitOrStand == "Stand") 
+	{
+		//Don't add card
+	}
+
+
+	
+
+
+
+
 
 
 	
