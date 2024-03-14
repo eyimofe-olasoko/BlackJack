@@ -63,7 +63,8 @@ int main()
 	cout << playerHand.front().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 
 	//Display the player's total card value from the two cards they pulled
-	cout << "Your total is " << playerHand.back().getValue() + playerHand.front().getValue() << endl;
+	playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
+	cout << "Your total is " << playerTotal << endl;
 
 	cout << endl;
 
@@ -72,27 +73,44 @@ int main()
 	cout << dealerHand.back().getValue() << " of " << dealerHand.back().getSuit() << "'s" << endl;
 	cout << dealerHand.front().getValue() << " of " << dealerHand.front().getSuit() << "'s" << endl;
 
-	cout << "Your total is " << dealerHand.back().getValue() + dealerHand.front().getValue() << endl;
+	dealerTotal = dealerHand.back().getValue() + dealerHand.front().getValue();
+	cout << "Your total is " << dealerTotal << endl;
 
-	
+	//Creating a do while loop to make sure the player input is either (H) or (S)
 	do
 	{
+		//Getting player input
 		cout << "Do you want to Hit or Stand? " << endl;
 		cout << "Press (H) for Hit or (S) for stand: ";
 		cin >> hitOrStand;
 
-		if (hitOrStand != "H" || hitOrStand != "S")
+		if (hitOrStand != "H" && hitOrStand != "S")
 		{
+			//Displaying a prompt to notify the player they entered a wrong input
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
-	} while (hitOrStand != "H" || hitOrStand != "S");
-	
+		
+
+	} while (hitOrStand != "H" && hitOrStand != "S");
+
+	do
+	{
+
+		cout << "Hit again (Y) for Yes (N) for No: ";
+
+		cin >> hitOrStand;
+
+	} while (hitOrStand == "Y");
 
 
 
 
 
+	if (dealerTotal > playerTotal)
+	{
+
+	}
 	//blackJackDeck.cardDeck.back();
 
 
