@@ -76,6 +76,12 @@ int main()
 	dealerTotal = dealerHand.back().getValue() + dealerHand.front().getValue();
 	cout << "Your total is " << dealerTotal << endl;
 
+	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
+	{
+		//player got a blackjack
+	}
+
+
 	//Creating a do while loop to make sure the player input is either (H) or (S)
 	do
 	{
@@ -90,26 +96,38 @@ int main()
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
-		
-
 	} while (hitOrStand != "H" && hitOrStand != "S");
+
+	
+
 
 	do
 	{
 
-		cout << "Hit again (Y) for Yes (N) for No: ";
-
+		cout << "Hit again (Y) for Yes: ";
 		cin >> hitOrStand;
+
+		if (hitOrStand == "Y")
+		{
+			playerHand.push_back(blackJackDeck.cardDeck.back());
+		}
 
 	} while (hitOrStand == "Y");
 
-
+	do
+	{
+		//SPAWN MORE CARDS
+	} while (dealerTotal < 17);
 
 
 
 	if (dealerTotal > playerTotal)
 	{
-
+		// loss
+	}
+	else 
+	{
+		// win
 	}
 	//blackJackDeck.cardDeck.back();
 
