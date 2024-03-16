@@ -14,8 +14,8 @@ int main()
 	int PlayerMoney = 1000;
 
 	// Adding the player's and dealer's card totals
-	int playerTotal;
-	int dealerTotal;
+	int playerTotal = 0;
+	int dealerTotal = 0;
 
 	//Setting the seed of srand to 0 so a different number generates on each run of the game.
 	srand(time(0));
@@ -73,10 +73,10 @@ int main()
 	cout << dealerHand.back().getValue() << " of " << dealerHand.back().getSuit() << "'s" << endl;
 	cout << dealerHand.front().getValue() << " of " << dealerHand.front().getSuit() << "'s" << endl;
 
-	dealerTotal = dealerHand.back().getValue() + dealerHand.front().getValue();
+	dealerTotal += dealerHand.back().getValue();// Add dealerHand.back.front().getValue() on later
 	cout << "Your total is " << dealerTotal << endl;
 
-	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
+	if (playerTotal == 21)
 	{
 		//player got a blackjack
 	}
@@ -96,15 +96,7 @@ int main()
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
-	} while (hitOrStand != "H" && hitOrStand != "S");
-
-	do
-	{
-
-		cout << "Hit again (Y) for Yes (N) for No: ";
-		cin >> hitOrStand;
-
-		if (hitOrStand == "Y")
+		while (hitOrStand == "H")
 		{
 			playerHand.push_back(blackJackDeck.cardDeck.back());
 
@@ -113,9 +105,48 @@ int main()
 			blackJackDeck.cardDeck.pop_back();
 
 			cout << playerTotal << endl;
+
+			cout << endl;
+
+			cout << "Hit again (Y) for Yes (N) for No: ";
+			cin >> hitOrStand;
+
+			if (hitOrStand == "Y")
+			{
+				playerHand.push_back(blackJackDeck.cardDeck.back());
+
+				playerTotal += blackJackDeck.cardDeck.back().getValue();
+
+				blackJackDeck.cardDeck.pop_back();
+
+				cout << playerTotal << endl;
+				
+			}
+			else 
+			{
+				goto DisplayDealerHand;
+			}
+
+			if (playerTotal > 21)
+			{
+				cout << "Sorry! You went bust" << endl;
+				
+				goto DisplayDealerHand;
+			}
 		}
 
+	} while (hitOrStand != "H" && hitOrStand != "S");
+
+	DisplayDealerHand:
+
+
+	do
+	{
+
+		
+
 	} while (hitOrStand == "Y");
+
 
 	do
 	{
