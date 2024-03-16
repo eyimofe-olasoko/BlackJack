@@ -98,18 +98,21 @@ int main()
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	
-
-
 	do
 	{
 
-		cout << "Hit again (Y) for Yes: ";
+		cout << "Hit again (Y) for Yes (N) for No: ";
 		cin >> hitOrStand;
 
 		if (hitOrStand == "Y")
 		{
 			playerHand.push_back(blackJackDeck.cardDeck.back());
+
+			playerTotal += blackJackDeck.cardDeck.back().getValue();
+
+			blackJackDeck.cardDeck.pop_back();
+
+			cout << playerTotal << endl;
 		}
 
 	} while (hitOrStand == "Y");
