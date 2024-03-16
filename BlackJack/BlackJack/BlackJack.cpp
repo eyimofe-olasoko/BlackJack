@@ -96,56 +96,40 @@ int main()
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
+
 		while (hitOrStand == "H")
 		{
+			//Adding another card from the card deck to the player's hand then adding the card number to player total
 			playerHand.push_back(blackJackDeck.cardDeck.back());
 
 			playerTotal += blackJackDeck.cardDeck.back().getValue();
 
+			//Once the card has been added to the players total we can remove it from the deck
 			blackJackDeck.cardDeck.pop_back();
 
 			cout << playerTotal << endl;
 
-			cout << endl;
+			hitOrStand = "";
 
-			cout << "Hit again (Y) for Yes (N) for No: ";
-			cin >> hitOrStand;
-
-			if (hitOrStand == "Y")
-			{
-				playerHand.push_back(blackJackDeck.cardDeck.back());
-
-				playerTotal += blackJackDeck.cardDeck.back().getValue();
-
-				blackJackDeck.cardDeck.pop_back();
-
-				cout << playerTotal << endl;
-				
-			}
-			else 
-			{
-				goto DisplayDealerHand;
-			}
-
+			//Checking if the player's total has exceeded 21, which would mean they went bust/lost
 			if (playerTotal > 21)
 			{
 				cout << "Sorry! You went bust" << endl;
-				
+
 				goto DisplayDealerHand;
 			}
+
 		}
+
+		
+			
+		
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
 	DisplayDealerHand:
 
-
-	do
-	{
-
-		
-
-	} while (hitOrStand == "Y");
+	
 
 
 	do
