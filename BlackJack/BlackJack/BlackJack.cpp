@@ -44,8 +44,6 @@ int main()
 	Cards dealerFirstCard = blackJackDeck.cardDeck.back();
 	//Remove last element in the vector
 	blackJackDeck.cardDeck.pop_back();
-	Cards dealerSecondCard = blackJackDeck.cardDeck.back();
-	blackJackDeck.cardDeck.pop_back();
 
 
 
@@ -53,9 +51,8 @@ int main()
 	playerHand.push_back(playerFirstCard);
 	playerHand.push_back(playerSecondCard);
 
-	//Getting the first and second card for the dealer
+	//Getting the first for the dealer
 	dealerHand.push_back(dealerFirstCard);
-	dealerHand.push_back(dealerSecondCard);
 
 	//Displaying the player's card values and suits
 	cout << "Your cards: " << endl;
@@ -80,17 +77,24 @@ int main()
 		{
 			cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
+			//Setting the value of the card to 10 because in blackjack anything above a ten is also worth ten.
+			playerHand[item].setValue(10);
+
 			changeValue = true;
 		}
 		else if (playerHand[item].getValue() == 12)
 		{
 			cout << "Queen" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
+			playerHand[item].setValue(10);
+
 			changeValue = true;
 		}
 		else if (playerHand[item].getValue() == 13)
 		{
 			cout << "King" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			playerHand[item].setValue(10);
 
 			changeValue = true;
 		}
@@ -125,17 +129,23 @@ int main()
 	{
 		cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
+		dealerHand.back().setValue(10);
+
 		changeValue = true;
 	}
 	else if (dealerHand.back().getValue() == 12)
 	{
 		cout << "Queen" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
+		dealerHand.back().setValue(10);
+
 		changeValue = true;
 	}
 	else if (dealerHand.back().getValue() == 13)
 	{
 		cout << "King" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		dealerHand.back().setValue(10);
 
 		changeValue = true;
 	}
@@ -144,17 +154,16 @@ int main()
 	{
 		cout << dealerHand.back().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 	}
-	
-	cout << "CARD CONCEALED" << endl;
 
-	dealerTotal += dealerHand.back().getValue();// Add dealerHand.back.front().getValue() on later
+
+	dealerTotal += dealerHand.back().getValue();
 	cout << "Your total is " << dealerTotal << endl;
 
 	cout << endl;
 
 	if (playerTotal == 21)
 	{
-		//player got a blackjack
+		goto YouWin;
 	}
 
 
@@ -242,7 +251,8 @@ int main()
 		//Don't add card
 	}
 
-
+	YouWin:
+	cout << "Congratulation! You Win" << endl;
 }
 
 	

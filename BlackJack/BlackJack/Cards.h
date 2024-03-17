@@ -18,6 +18,10 @@ public:
 
 	string getSuit();
 	int getValue();
+	
+
+	void setSuit(string newsuit);
+	void setValue(int newValue);
 
 };
 
