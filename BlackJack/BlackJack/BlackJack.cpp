@@ -57,10 +57,8 @@ int main()
 	//Displaying the player's card values and suits
 	cout << "Your cards: " << endl;
 
-	
+
 	bool changeValue;
-
-
 	for (size_t item = 0; item < 2; item++)
 	{
 		//Setting the value of changeValue to false 
@@ -104,8 +102,9 @@ int main()
 		{
 			cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 		}
-		
+
 	}
+
 
 	//Display the player's total card value from the two cards they pulled
 	playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
@@ -159,6 +158,16 @@ int main()
 	dealerTotal += dealerHand.back().getValue();
 	cout << "Your total is " << dealerTotal << endl;
 
+	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
+	{
+		cout << "BLACK JACK!!!" << endl;
+	}
+	else if (dealerHand.back().getValue() == 1 && dealerHand.front().getValue() == 10)
+	{
+		cout << "BLACK JACK!!!" << endl;
+	}
+
+
 	cout << endl;
 
 	if (playerTotal == 21)
@@ -203,13 +212,13 @@ int main()
 
 				cout << "Dealer Wins" << endl;
 
-				//goto DisplayDealerHand;
+				goto DisplayDealerHand;
 			}
 		}
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	//DisplayDealerHand:
+	DisplayDealerHand:
 
 	do
 	{
@@ -227,7 +236,7 @@ int main()
 	{
 		// Draw
 	}
-	else 
+	else
 	{
 		//Win
 	}
@@ -253,9 +262,9 @@ int main()
 
 	YouWin:
 	cout << "Congratulation! You Win" << endl;
-}
 
-	
+
+}
 
 
 	
