@@ -195,7 +195,22 @@ int main()
 			//Adding another card from the card deck to the player's hand then adding the card number to player total
 			playerHand.push_back(blackJackDeck.cardDeck.back());
 
-			playerTotal += blackJackDeck.cardDeck.back().getValue();
+			//cout << blackJackDeck.cardDeck.back().getValue();
+
+			if (playerHand.back().getValue() == 11)
+			{
+				playerHand.back().setValue(10);
+			}
+			else if (playerHand.back().getValue() == 12)
+			{
+				playerHand.back().setValue(10);
+			}
+			else if (playerHand.back().getValue() == 13)
+			{
+				playerHand.back().setValue(10);
+			}
+			
+			playerTotal += playerHand.back().getValue();
 
 			//Once the card has been added to the players total we can remove it from the deck
 			blackJackDeck.cardDeck.pop_back();
