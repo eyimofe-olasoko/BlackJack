@@ -59,17 +59,18 @@ int main()
 
 	//Displaying the player's card values and suits
 	cout << "Your cards: " << endl;
-	//cout << playerHand.back().getValue() << " of " << playerHand.back().getSuit() << "'s" << endl;
-	//cout << playerHand.front().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 
-	bool changeValue = false;
+	
+	bool changeValue;
 
 
 	for (size_t item = 0; item < 2; item++)
 	{
+		//Setting the value of changeValue to false 
 		changeValue = false;
 
-		if (playerHand[item].getValue() == 0)
+		//Creating condition to check if the the card value conresponds with card name
+		if (playerHand[item].getValue() == 1)
 		{
 			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
@@ -94,6 +95,7 @@ int main()
 			changeValue = true;
 		}
 
+		//Checking if changeValue is false, as if it is then the the program will display the default card value without change the number to a name like "jack" or Ace
 		if (changeValue == false)
 		{
 			cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
@@ -109,7 +111,40 @@ int main()
 
 	//Displaying the dealer's card values and suits
 	cout << "The dealers cards: " << endl;
-	cout << dealerHand.back().getValue() << " of " << dealerHand.back().getSuit() << "'s" << endl;
+
+	changeValue = false;
+
+	//Creating condition to check if the the card value conresponds with card name
+	if (dealerHand.back().getValue() == 1)
+	{
+		cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		changeValue = true;
+	}
+	else if (dealerHand.back().getValue() == 11)
+	{
+		cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		changeValue = true;
+	}
+	else if (dealerHand.back().getValue() == 12)
+	{
+		cout << "Queen" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		changeValue = true;
+	}
+	else if (dealerHand.back().getValue() == 13)
+	{
+		cout << "King" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		changeValue = true;
+	}
+
+	if (changeValue == false)
+	{
+		cout << dealerHand.back().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+	}
+	
 	cout << "CARD CONCEALED" << endl;
 
 	dealerTotal += dealerHand.back().getValue();// Add dealerHand.back.front().getValue() on later
