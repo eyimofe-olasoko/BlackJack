@@ -26,7 +26,7 @@ int main()
 
 	//Creating a variable to store the user's input 
 	string hitOrStand;
-	
+
 	//Creating a deck object based on the deck class
 	Deck blackJackDeck = Deck();
 
@@ -59,8 +59,31 @@ int main()
 
 	//Displaying the player's card values and suits
 	cout << "Your cards: " << endl;
-	cout << playerHand.back().getValue() << " of " << playerHand.back().getSuit() << "'s" << endl;
-	cout << playerHand.front().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+	//cout << playerHand.back().getValue() << " of " << playerHand.back().getSuit() << "'s" << endl;
+	//cout << playerHand.front().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+
+
+	for (size_t item = 0; item < 2; item++)
+	{
+		if (playerHand[item].getValue() == 0)
+		{
+			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+		}
+		else if (playerHand[item].getValue() == 11)
+		{
+			cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
+		}
+		else if (playerHand[item].getValue() == 12)
+		{
+			cout << "Queen" << " of " << playerHand.back().getSuit() << "'s" << endl;
+		}
+		else if (playerHand[item].getValue() == 13)
+		{
+			cout << "King" << " of " << playerHand.back().getSuit() << "'s" << endl;
+		}
+
+		cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+	}
 
 	//Display the player's total card value from the two cards they pulled
 	playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
@@ -71,10 +94,12 @@ int main()
 	//Displaying the dealer's card values and suits
 	cout << "The dealers cards: " << endl;
 	cout << dealerHand.back().getValue() << " of " << dealerHand.back().getSuit() << "'s" << endl;
-	cout << dealerHand.front().getValue() << " of " << dealerHand.front().getSuit() << "'s" << endl;
+	cout << "CARD CONCEALED" << endl;
 
 	dealerTotal += dealerHand.back().getValue();// Add dealerHand.back.front().getValue() on later
 	cout << "Your total is " << dealerTotal << endl;
+
+	cout << endl;
 
 	if (playerTotal == 21)
 	{
@@ -96,7 +121,6 @@ int main()
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
-
 		while (hitOrStand == "H")
 		{
 			//Adding another card from the card deck to the player's hand then adding the card number to player total
@@ -109,6 +133,7 @@ int main()
 
 			cout << playerTotal << endl;
 
+			//Setting the value of hitOrStand to break out of the nested loop
 			hitOrStand = "";
 
 			//Checking if the player's total has exceeded 21, which would mean they went bust/lost
@@ -116,25 +141,20 @@ int main()
 			{
 				cout << "Sorry! You went bust" << endl;
 
-				goto DisplayDealerHand;
+				cout << "Dealer Wins" << endl;
+
+				//goto DisplayDealerHand;
 			}
-
 		}
-
-		
-			
-		
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	DisplayDealerHand:
-
-	
-
+	//DisplayDealerHand:
 
 	do
 	{
-		//SPAWN MORE CARDS
+
+
 	} while (dealerTotal < 17);
 
 
@@ -143,38 +163,14 @@ int main()
 	{
 		// loss
 	}
+	else if (dealerTotal == playerTotal)
+	{
+		// Draw
+	}
 	else 
 	{
-		// win
+		//Win
 	}
-	//blackJackDeck.cardDeck.back();
-
-
-
-
-
-
-
-
-	//cout << dealerHand.back().getSuit() << endl;
-	//cout << dealerHand.front().getValue() << endl;
-
-
-
-	//cout << "The dealer pulled a: " << dealerHand.back() << endl;
-
-
-
-
-
-
-
-	//
-	//int playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
-	//int dealerTotal = dealerHand.back().getValue() + dealerHand.front().getValue();
-
-
-
 
 	// if (playerHand.getValue() == 1) { //change to an ace maybe}
 	if (1 > 12)
@@ -190,19 +186,24 @@ int main()
 	{
 		//Add card
 	}
-	else if (hitOrStand == "Stand") 
+	else if (hitOrStand == "Stand")
 	{
 		//Don't add card
 	}
 
 
-	
-
-
-
-
-
-
-	
 }
+
+	
+
+
+	
+
+
+
+
+
+
+	
+
 

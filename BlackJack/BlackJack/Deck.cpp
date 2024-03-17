@@ -15,7 +15,7 @@ Deck::Deck() {
 	{
 		cardDeck.push_back(Cards("Diamond", item));
 
-		// Don't change the ACE in the loop probably
+		//Don't change the ACE in the loop probably
 		//Deck[0] = Cards("Diamond", 1);
 	}
 	for (size_t item = 0; item < 13; item++)
