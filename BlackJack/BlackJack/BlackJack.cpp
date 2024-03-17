@@ -62,27 +62,43 @@ int main()
 	//cout << playerHand.back().getValue() << " of " << playerHand.back().getSuit() << "'s" << endl;
 	//cout << playerHand.front().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 
+	bool changeValue = false;
+
 
 	for (size_t item = 0; item < 2; item++)
 	{
+		changeValue = false;
+
 		if (playerHand[item].getValue() == 0)
 		{
 			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			changeValue = true;
 		}
 		else if (playerHand[item].getValue() == 11)
 		{
 			cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			changeValue = true;
 		}
 		else if (playerHand[item].getValue() == 12)
 		{
 			cout << "Queen" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			changeValue = true;
 		}
 		else if (playerHand[item].getValue() == 13)
 		{
 			cout << "King" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			changeValue = true;
 		}
 
-		cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+		if (changeValue == false)
+		{
+			cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
+		}
+		
 	}
 
 	//Display the player's total card value from the two cards they pulled
