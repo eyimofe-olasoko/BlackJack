@@ -10,6 +10,13 @@ using namespace std;
 
 int main()
 {
+	//Creating a boolean variable to see if the card value need to be changed
+	bool changeValue;
+
+
+	bool wentBust = false;
+
+
 
 	int PlayerMoney = 1000;
 
@@ -58,7 +65,6 @@ int main()
 	cout << "Your cards: " << endl;
 
 
-	bool changeValue;
 	for (size_t item = 0; item < 2; item++)
 	{
 		//Setting the value of changeValue to false 
@@ -156,6 +162,7 @@ int main()
 
 
 	dealerTotal += dealerHand.back().getValue();
+
 	cout << "Your total is " << dealerTotal << endl;
 
 	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
@@ -167,14 +174,7 @@ int main()
 		cout << "BLACK JACK!!!" << endl;
 	}
 
-
 	cout << endl;
-
-	if (playerTotal == 21)
-	{
-		goto YouWin;
-	}
-
 
 	//Creating a do while loop to make sure the player input is either (H) or (S)
 	do
@@ -195,8 +195,7 @@ int main()
 			//Adding another card from the card deck to the player's hand then adding the card number to player total
 			playerHand.push_back(blackJackDeck.cardDeck.back());
 
-			//cout << blackJackDeck.cardDeck.back().getValue();
-
+			//Making sure that if the player gets a Jack, Queen, King to 10 and an Ace to a 1
 			if (playerHand.back().getValue() == 11)
 			{
 				playerHand.back().setValue(10);
@@ -209,13 +208,18 @@ int main()
 			{
 				playerHand.back().setValue(10);
 			}
+			else if (playerHand.back().getValue() == 0)
+			{
+				playerHand.back().setValue(1);
+			}
 			
+			//Adding the value of the card the player pulled to the player total
 			playerTotal += playerHand.back().getValue();
 
 			//Once the card has been added to the players total we can remove it from the deck
 			blackJackDeck.cardDeck.pop_back();
 
-			cout << playerTotal << endl;
+			cout << "You new total is: " << playerTotal << endl;
 
 			//Setting the value of hitOrStand to break out of the nested loop
 			hitOrStand = "";
@@ -223,60 +227,72 @@ int main()
 			//Checking if the player's total has exceeded 21, which would mean they went bust/lost
 			if (playerTotal > 21)
 			{
-				cout << "Sorry! You went bust" << endl;
+				//cout << "Sorry! You went bust" << endl;
 
 				cout << "Dealer Wins" << endl;
 
-				goto DisplayDealerHand;
+				wentBust = true;
+
+				//Breaking out of the nested loop
+				goto YouLose;
+
+
+
 			}
 		}
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	DisplayDealerHand:
 
 	do
 	{
+		dealerHand.push_back(blackJackDeck.cardDeck.back());
 
+		if (dealerHand.back().getValue() == 11)
+		{
+			dealerHand.back().setValue(10);
+		}
+		else if (dealerHand.back().getValue() == 12)
+		{
+			dealerHand.back().setValue(10);
+		}
+		else if (dealerHand.back().getValue() == 13)
+		{
+			dealerHand.back().setValue(10);
+		}
+		else if (dealerHand.back().getValue() == 0)
+		{
+			dealerHand.back().setValue(1);
+		}
+
+		dealerTotal += dealerHand.back().getValue();
+
+		blackJackDeck.cardDeck.pop_back();
+
+		cout << dealerTotal << endl;
+
+		if (dealerTotal > 21)
+		{
+			cout << "You win! Dealer went bust!" << endl;
+		}
+		else if (dealerTotal > playerTotal)
+		{
+			cout << "Dealer beats player" << endl;
+			break;
+		}
 
 	} while (dealerTotal < 17);
 
+	YouLose:
+
+	if (wentBust == true)
+	{
+		cout << "Went Bust" << endl;
+	}
 
 
-	if (dealerTotal > playerTotal)
-	{
-		// loss
-	}
-	else if (dealerTotal == playerTotal)
-	{
-		// Draw
-	}
-	else
-	{
-		//Win
-	}
 
-	// if (playerHand.getValue() == 1) { //change to an ace maybe}
-	if (1 > 12)
-	{
-		//BLACK JACK
-	}
-	else if (1 > 2) {
-		//LOST
-	}
-	//playerTotal < dealerTotal
-
-	if (hitOrStand == "Hit")
-	{
-		//Add card
-	}
-	else if (hitOrStand == "Stand")
-	{
-		//Don't add card
-	}
-
-	YouWin:
-	cout << "Congratulation! You Win" << endl;
+	
 
 
 }
