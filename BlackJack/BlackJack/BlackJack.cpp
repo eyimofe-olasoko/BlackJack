@@ -19,6 +19,9 @@ int main()
 	//Creating a bool is track if the dealer got an ace
 	bool isAce = false;
 
+	//Creating a variable to see if a blackjack is achieved
+	bool isBlackJack = false;
+
 	// Adding the player's and dealer's card totals
 	int playerTotal = 0;
 	int dealerTotal = 0;
@@ -134,9 +137,6 @@ int main()
 
 	changeValue = false;
 
-
-	dealerHand.back().setValue(1);
-
 	//Creating condition to check if the the card value conresponds with card name
 	if (dealerHand.back().getValue() == 1)
 	{
@@ -170,6 +170,7 @@ int main()
 	}
 	else if (dealerHand.back().getValue() == 0)
 	{
+		dealerHand.back().setValue(1);
 
 		cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
@@ -261,8 +262,6 @@ int main()
 	//Creating a while to add cards to the dealers hand as long as the total is below 17
 	while (dealerTotal <= 17)
 	{
-		blackJackDeck.cardDeck.back().setValue(11);
-
 		dealerHand.push_back(blackJackDeck.cardDeck.back());
 
 		if (dealerHand.back().getValue() == 11)
@@ -286,6 +285,9 @@ int main()
 		//Checking if the player got and Ace and a 10 
 		if (isAce == true && dealerHand.back().getValue() == 10)
 		{
+
+			isBlackJack = true;
+
 			//Setting Ace the player pulled value's to an 11 as they got a blackjack
 			dealerHand.front().setValue(11);
 
@@ -306,8 +308,6 @@ int main()
 		cout << "Dealer's total is: " << dealerTotal << endl;
 
 		blackJackDeck.cardDeck.pop_back();
-
-		
 
 		//Checking if the dealer when bust/if the dealer got a higher total than the player
 		if (dealerTotal > 21)
@@ -331,24 +331,24 @@ int main()
 
 	Break:
 
-	if (dealerTotal > playerTotal)
+	//Checking if the dealer got a blackjack and they also have a greater total than the player
+	if (isBlackJack == true && dealerTotal > playerTotal)
 	{
-		cout << "You lose" << endl;
+		cout << "You lose!" << endl;
 	}
-
-	if (dealerTotal == playerTotal)
+	//Checking if the player got a black jack and they drew with the player
+	else if (isBlackJack == true && dealerTotal == playerTotal)
 	{
 		cout << "You drew with the dealer" << endl;
 	}
-
-
-	if (wentBust == true)
+	else if (wentBust == true)
 	{
-
+		cout << "You went bust!!" << endl;
 	}
-
-
-
+	else if (playerTotal > dealerTotal)
+	{
+		cout << "You win!!" << endl;
+	}
 }
 
 
