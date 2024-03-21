@@ -64,7 +64,6 @@ int main()
 	//Displaying the player's card values and suits
 	cout << "Your cards: " << endl;
 
-
 	for (size_t item = 0; item < 2; item++)
 	{
 		//Setting the value of changeValue to false 
@@ -111,9 +110,15 @@ int main()
 
 	}
 
+	//Setting the Ace card to 11 if the player has also pulled a 10 so they can get a blackjack
+	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
+	{
+		playerHand.back().setValue(11);
+	}
 
 	//Display the player's total card value from the two cards they pulled
 	playerTotal = playerHand.back().getValue() + playerHand.front().getValue();
+
 	cout << "Your total is " << playerTotal << endl;
 
 	cout << endl;
@@ -165,15 +170,6 @@ int main()
 
 	cout << "Your total is " << dealerTotal << endl;
 
-	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
-	{
-		cout << "BLACK JACK!!!" << endl;
-	}
-	else if (dealerHand.back().getValue() == 1 && dealerHand.front().getValue() == 10)
-	{
-		cout << "BLACK JACK!!!" << endl;
-	}
-
 	cout << endl;
 
 	//Creating a do while loop to make sure the player input is either (H) or (S)
@@ -212,7 +208,7 @@ int main()
 			{
 				playerHand.back().setValue(1);
 			}
-			
+
 			//Adding the value of the card the player pulled to the player total
 			playerTotal += playerHand.back().getValue();
 
@@ -227,24 +223,19 @@ int main()
 			//Checking if the player's total has exceeded 21, which would mean they went bust/lost
 			if (playerTotal > 21)
 			{
-				//cout << "Sorry! You went bust" << endl;
-
 				cout << "Dealer Wins" << endl;
 
 				wentBust = true;
 
 				//Breaking out of the nested loop
-				goto YouLose;
-
-
-
+				goto Break;
 			}
 		}
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-
-	do
+	//Creating a while to add cards to the dealers hand as long as the total is below 17
+	while (dealerTotal <= 17)
 	{
 		dealerHand.push_back(blackJackDeck.cardDeck.back());
 
@@ -271,28 +262,23 @@ int main()
 
 		cout << dealerTotal << endl;
 
+		//Checking if the dealer when bust/if the dealer got a higher total than the player
 		if (dealerTotal > 21)
 		{
 			cout << "You win! Dealer went bust!" << endl;
+			break;
 		}
 		else if (dealerTotal > playerTotal)
 		{
 			cout << "Dealer beats player" << endl;
 			break;
 		}
-
-	} while (dealerTotal < 17);
-
-	YouLose:
-
-	if (wentBust == true)
-	{
-		cout << "Went Bust" << endl;
 	}
 
+	Break:
 
+	cout << endl;
 
-	
 
 
 }
