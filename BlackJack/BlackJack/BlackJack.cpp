@@ -257,8 +257,6 @@ int main()
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	
-
 	//Creating a while to add cards to the dealers hand as long as the total is below 17
 	while (dealerTotal <= 17)
 	{
@@ -299,7 +297,7 @@ int main()
 			cout << "Dealer's total is: " << dealerTotal << endl;
 
 			cout << "Dealer got a blackjack" << endl;
-			
+
 			break;
 		}
 
