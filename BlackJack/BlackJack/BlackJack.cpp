@@ -101,6 +101,12 @@ int main()
 
 			changeValue = true;
 		}
+		else if (playerHand[item].getValue() == 0)
+		{
+			playerHand[item].setValue(1);
+
+			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+		}
 
 		//Checking if changeValue is false, as if it is then the the program will display the default card value without change the number to a name like "jack" or Ace
 		if (changeValue == false)
@@ -114,6 +120,7 @@ int main()
 	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
 	{
 		playerHand.back().setValue(11);
+
 	}
 
 	//Display the player's total card value from the two cards they pulled
@@ -159,6 +166,13 @@ int main()
 
 		changeValue = true;
 	}
+	else if (dealerHand.back().getValue() == 0)
+	{
+
+		cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+		changeValue = true;
+	}
 
 	if (changeValue == false)
 	{
@@ -166,11 +180,19 @@ int main()
 	}
 
 
-	dealerTotal += dealerHand.back().getValue();
+	dealerTotal = dealerHand.back().getValue();
 
 	cout << "Your total is " << dealerTotal << endl;
 
 	cout << endl;
+
+
+	bool isAce = false;
+
+	if (dealerHand.back().getValue() == 1)
+	{
+		isAce = true;
+	}
 
 	//Creating a do while loop to make sure the player input is either (H) or (S)
 	do
@@ -258,9 +280,19 @@ int main()
 
 		dealerTotal += dealerHand.back().getValue();
 
+		if (isAce == true && playerHand.back().getValue() == 10)
+		{
+			//BLACKJACK
+
+			break;
+		}
+
 		blackJackDeck.cardDeck.pop_back();
 
 		cout << dealerTotal << endl;
+
+		
+
 
 		//Checking if the dealer when bust/if the dealer got a higher total than the player
 		if (dealerTotal > 21)
@@ -277,7 +309,10 @@ int main()
 
 	Break:
 
-	cout << endl;
+	if (true)
+	{
+
+	}
 
 
 
