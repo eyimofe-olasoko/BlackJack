@@ -339,10 +339,12 @@ int main()
 	{
 		cout << "You drew with the dealer" << endl;
 	}
+	//Checking if the player went bust
 	else if (wentBust == true)
 	{
 		cout << "You went bust!!" << endl;
 	}
+	//Checking if the player got a higher total than the dealer
 	else if (playerTotal > dealerTotal)
 	{
 		cout << "You win!!" << endl;
