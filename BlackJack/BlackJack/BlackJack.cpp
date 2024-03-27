@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	//Creating a boolean variable to see if the card value need to be changed
-	bool changeValue = false;
+	bool changeValue;
 
 	//Creating a bool is track if the player went bust
 	bool wentBust = false;
@@ -103,6 +103,8 @@ int main()
 			playerHand[item].setValue(1);
 
 			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
+
+			changeValue = true;
 		}
 
 		//Checking if changeValue is false, as if it is then the the program will display the default card value without change the number to a name like "jack" or Ace
@@ -110,6 +112,9 @@ int main()
 		{
 			cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 		}
+
+		//Changing the value of changeValue to false 
+		changeValue = false;
 
 	}
 
