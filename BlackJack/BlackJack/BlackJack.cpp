@@ -66,7 +66,6 @@ int main()
 
 	for (size_t item = 0; item < 2; item++)
 	{
-
 		//Creating condition to check if the the card value conresponds with card name
 		if (playerHand[item].getValue() == 1)
 		{
