@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	//Creating a boolean variable to see if the card value need to be changed
-	bool changeValue;
+	bool changeValue = false;
 
 	//Creating a bool is track if the player went bust
 	bool wentBust = false;
