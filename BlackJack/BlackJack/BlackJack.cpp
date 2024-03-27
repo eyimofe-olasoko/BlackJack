@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	//Creating a boolean variable to see if the card value need to be changed
-	bool changeValue;
+	bool changeValue = false;
 
 	//Creating a bool is track if the player went bust
 	bool wentBust = false;
@@ -54,8 +54,6 @@ int main()
 	//Remove last element in the vector
 	blackJackDeck.cardDeck.pop_back();
 
-
-
 	//Getting the first and second card for the player
 	playerHand.push_back(playerFirstCard);
 	playerHand.push_back(playerSecondCard);
@@ -68,8 +66,6 @@ int main()
 
 	for (size_t item = 0; item < 2; item++)
 	{
-		//Setting the value of changeValue to false 
-		changeValue = false;
 
 		//Creating condition to check if the the card value conresponds with card name
 		if (playerHand[item].getValue() == 1)
