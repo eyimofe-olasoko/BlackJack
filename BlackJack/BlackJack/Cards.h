@@ -20,7 +20,7 @@ public:
 	int getValue();
 	
 
-	void setSuit(string newsuit);
+	void setSuit(string newSuit);
 	void setValue(int newValue);
 
 };

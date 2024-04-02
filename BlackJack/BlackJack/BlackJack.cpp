@@ -16,7 +16,7 @@ int main()
 	//Creating a bool to track if the player went bust
 	bool wentBust = false;
 
-	//Creating a bool is track if the dealer got an ace
+	//Creating a bool to track if the dealer got an ace
 	bool isAce = false;
 
 	//Creating a variable to see if a blackjack is achieved
@@ -29,7 +29,7 @@ int main()
 	//Setting the seed of srand to 0 so a different number generates on each run of the game.
 	srand(time(0));
 
-	//Creating a vector to store all of the cards in the player's hand
+	//Creating a vector to store all of the cards in the player's and dealer's hands
 	vector<Cards> playerHand;
 	vector<Cards> dealerHand;
 
@@ -46,6 +46,7 @@ int main()
 	Cards playerFirstCard = blackJackDeck.cardDeck.back();
 	//Remove last element in the vector
 	blackJackDeck.cardDeck.pop_back();
+
 	Cards playerSecondCard = blackJackDeck.cardDeck.back();
 	blackJackDeck.cardDeck.pop_back();
 
@@ -58,7 +59,7 @@ int main()
 	playerHand.push_back(playerFirstCard);
 	playerHand.push_back(playerSecondCard);
 
-	//Getting the first for the dealer
+	//Getting the first card for the dealer
 	dealerHand.push_back(dealerFirstCard);
 
 	//Displaying the player's card values and suits
@@ -66,7 +67,7 @@ int main()
 
 	for (size_t item = 0; item < 2; item++)
 	{
-		//Creating condition to check if the the card value conresponds with card name
+		//Creating a condition to check if the the card value conresponds with card name
 		if (playerHand[item].getValue() == 1)
 		{
 			cout << "Ace" << " of " << playerHand.back().getSuit() << "'s" << endl;
@@ -77,7 +78,7 @@ int main()
 		{
 			cout << "Jack" << " of " << playerHand.back().getSuit() << "'s" << endl;
 
-			//Setting the value of the card to 10 because in blackjack anything above a ten is also worth ten.
+			//Setting the value of the card to 10 because in blackjack any card above a ten is also worth ten.
 			playerHand[item].setValue(10);
 
 			changeValue = true;
@@ -107,7 +108,7 @@ int main()
 			changeValue = true;
 		}
 
-		//Checking if changeValue is false, as if it is then the the program will display the default card value without change the number to a name like "jack" or Ace
+		//Checking if changeValue is false, as if it is then the the program will display the default card value without changing the number to a name like "Jack" or "Ace"
 		if (changeValue == false)
 		{
 			cout << playerHand[item].getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
@@ -118,7 +119,7 @@ int main()
 
 	}
 
-	//Setting the Ace card to 11 if the player has also pulled a 10 so they can get a blackjack
+	//Setting the Ace card to 11 if the player has also pulled a 10 so they can get a Blackjack
 	if (playerHand.back().getValue() == 1 && playerHand.front().getValue() == 10)
 	{
 		playerHand.back().setValue(11);
@@ -182,7 +183,6 @@ int main()
 		cout << dealerHand.back().getValue() << " of " << playerHand.front().getSuit() << "'s" << endl;
 	}
 
-
 	dealerTotal = dealerHand.back().getValue();
 
 	cout << "Your total is " << dealerTotal << endl;
@@ -205,13 +205,13 @@ int main()
 
 		if (hitOrStand != "H" && hitOrStand != "S")
 		{
-			//Displaying a prompt to notify the player they entered a wrong input
+			//Displaying a prompt to notify the players that they entered a wrong input
 			cout << "Please enter (H) for Hit or (S) for stand" << endl;
 		}
 
 		while (hitOrStand == "H")
 		{
-			//Adding another card from the card deck to the player's hand then adding the card number to player total
+			//Adding another card from the card deck to the players' hands then adding the card number to player total
 			playerHand.push_back(blackJackDeck.cardDeck.back());
 
 			//Making sure that if the player gets a Jack, Queen, King to 10 and an Ace to a 1
@@ -235,7 +235,7 @@ int main()
 			//Adding the value of the card the player pulled to the player total
 			playerTotal += playerHand.back().getValue();
 
-			//Once the card has been added to the players total we can remove it from the deck
+			//Once the card value has been added to the players total we can remove it from the deck
 			blackJackDeck.cardDeck.pop_back();
 
 			cout << "You new total is: " << playerTotal << endl;
@@ -257,7 +257,7 @@ int main()
 
 	} while (hitOrStand != "H" && hitOrStand != "S");
 
-	//Creating a while to add cards to the dealers hand as long as the total is below 17
+	//Creating a while to add cards to the dealers hand as long as their total is below 17
 	while (dealerTotal <= 17)
 	{
 		dealerHand.push_back(blackJackDeck.cardDeck.back());
@@ -280,16 +280,16 @@ int main()
 		}
 
 
-		//Checking if the player got and Ace and a 10 
+		//Checking if the player got and Ace and a card value of 10 
 		if (isAce == true && dealerHand.back().getValue() == 10)
 		{
 
 			isBlackJack = true;
 
-			//Setting Ace the player pulled value's to an 11 as they got a blackjack
+			//Setting the Ace the player pulled value's to an 11 so they can get a blackjack
 			dealerHand.front().setValue(11);
 
-			//Changing the dealer total is the new value
+			//Changing the dealer total to the new value
 			dealerTotal = dealerHand.front().getValue();
 
 			dealerTotal += dealerHand.back().getValue();
@@ -334,7 +334,7 @@ int main()
 	{
 		cout << "You lose!" << endl;
 	}
-	//Checking if the player got a black jack and they drew with the player
+	//Checking if the player got a Black jack and they drew with the player
 	else if (isBlackJack == true && dealerTotal == playerTotal)
 	{
 		cout << "You drew with the dealer" << endl;
