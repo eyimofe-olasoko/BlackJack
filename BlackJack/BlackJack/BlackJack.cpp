@@ -10,10 +10,10 @@ using namespace std;
 
 int main()
 {
-	//Creating a boolean variable to see if the card value need to be changed
+	//Creating a boolean variable to see if the card value needs to be changed
 	bool changeValue = false;
 
-	//Creating a bool is track if the player went bust
+	//Creating a bool to track if the player went bust
 	bool wentBust = false;
 
 	//Creating a bool is track if the dealer got an ace
@@ -22,14 +22,14 @@ int main()
 	//Creating a variable to see if a blackjack is achieved
 	bool isBlackJack = false;
 
-	// Adding the player's and dealer's card totals
+	//Adding the player's and dealer's card totals
 	int playerTotal = 0;
 	int dealerTotal = 0;
 
 	//Setting the seed of srand to 0 so a different number generates on each run of the game.
 	srand(time(0));
 
-	//Creating a vector to store all of the card in the player's hand
+	//Creating a vector to store all of the cards in the player's hand
 	vector<Cards> playerHand;
 	vector<Cards> dealerHand;
 
